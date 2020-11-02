@@ -3,6 +3,10 @@
     <div>data.a {{ data.a }} - {{ Math.random() }}</div>
     <div>data.b {{ data.b }} - {{ Math.random() }}</div>
     <div>data.c {{ data.c }} - {{ Math.random() }}</div>
+    <div>empty.a {{ empty.a }} - {{ Math.random() }}</div>
+
+    <Comp :data="data" />
+
     <br />
     <br />
     <button @click="addA">a++</button>
@@ -15,6 +19,9 @@
     <br />
     <br />
     <button @click="assignUnused">assign unused</button>
+    <br />
+    <br />
+    <button @click="setEmpty">set empty object</button>
   </div>
 </template>
 
@@ -26,6 +33,7 @@ export default {
         a: 0,
         b: 0,
       },
+      empty: {},
       unused: null,
     };
   },
@@ -40,12 +48,16 @@ export default {
       this.data.c = Math.random();
     },
     setC() {
-      this.$set(this.data, "c", 0);
+      this.$set(this.data, "c", Math.random());
     },
     objectAssignC() {
       this.data = Object.assign({}, this.data, {
         c: 0,
       });
+    },
+    setEmpty() {
+      this.data = { a: 1, b: 1 };
+      // this.$set(this.empty, "c", Math.random());
     },
     assignUnused() {
       this.unused = Math.random();

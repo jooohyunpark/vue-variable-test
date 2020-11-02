@@ -55,12 +55,10 @@ export default {
     },
     assignC() {
       this.data.c = Math.random();
-      // console.log(this.data);
+      console.log(this.data);
     },
     setC() {
       this.$set(this.data, "c", 0);
-      // test stash
-      // this.$set(this.data, "c", Math.random());
     },
     objectAssignC() {
       this.data = Object.assign({}, this.data, {

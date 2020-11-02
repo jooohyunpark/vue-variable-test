@@ -11,6 +11,7 @@
     <br />
     <button @click="addA">a++</button>
     <button @click="addB">b++</button>
+    <button @click="addC">c++</button>
     <br />
     <br />
     <button @click="assignC">assign data.c directly</button>
@@ -44,11 +45,16 @@ export default {
     addB() {
       this.data.b += 1;
     },
+    addC() {
+      this.data.c += 1;
+    },
     assignC() {
       this.data.c = Math.random();
+      console.log(this.data);
     },
     setC() {
-      this.$set(this.data, "c", Math.random());
+      this.$set(this.data, "c", 0);
+      // this.$set(this.data, "c", Math.random());
     },
     objectAssignC() {
       this.data = Object.assign({}, this.data, {
@@ -56,7 +62,7 @@ export default {
       });
     },
     setEmpty() {
-      this.data = { a: 1, b: 1 };
+      this.empty = { a: 1, b: 1 };
       // this.$set(this.empty, "c", Math.random());
     },
     assignUnused() {

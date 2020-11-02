@@ -3,7 +3,9 @@
     <div>data.a {{ data.a }} - {{ Math.random() }}</div>
     <div>data.b {{ data.b }} - {{ Math.random() }}</div>
     <div>data.c {{ data.c }} - {{ Math.random() }}</div>
-    <div>empty.a {{ empty.a }} - {{ Math.random() }}</div>
+    <div v-for="(item, i) in array" :key="i">
+      array {{ item }} - {{ Math.random() }}
+    </div>
 
     <Comp :data="data" />
 
@@ -22,7 +24,10 @@
     <button @click="assignUnused">assign unused</button>
     <br />
     <br />
-    <button @click="setEmpty">set empty object</button>
+    <button @click="defineObject">define object directly</button>
+    <br />
+    <br />
+    <button @click="pushArray">push to array</button>
   </div>
 </template>
 
@@ -34,7 +39,7 @@ export default {
         a: 0,
         b: 0,
       },
-      empty: {},
+      array: [],
       unused: null,
     };
   },
@@ -61,13 +66,15 @@ export default {
         c: 0,
       });
     },
-    setEmpty() {
-      this.empty = { a: 1, b: 1 };
-      // this.$set(this.empty, "c", Math.random());
+    defineObject() {
+      this.data = { a: 1, b: 1 };
     },
     assignUnused() {
       this.unused = Math.random();
       console.log("variable updated but not used: ", this.unused);
+    },
+    pushArray() {
+      this.array.push(Math.random());
     },
   },
 };
